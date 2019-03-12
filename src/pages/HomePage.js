@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 // pages
 import UsuarioPage from './UsuarioPage';
 import { isAutenticado } from '../utils/LoginManager';
-import { Table, Input } from 'reactstrap';
+import { Table, Alert } from 'reactstrap';
 
 import { clientFindAll } from '../utils/Api';
+
+import { DebounceInput } from 'react-debounce-input';
 
 class HomePage extends Component {
 
@@ -24,11 +26,6 @@ class HomePage extends Component {
         })
     }
 
-    this.search = (e) => {
-      this.setState({ search: e.target.value });
-      this.clientList();
-    }
-
   }
 
   componentDidMount() {
@@ -36,36 +33,57 @@ class HomePage extends Component {
     this.setState({ search: "" });
   }
 
-  render() {
+  componentDidUpdate(oldProps, oldState) {
+    const { search } = this.state;
+    if (search !== oldState.search) {
+      this.clientList();
+    }
+  }
 
-    console.log(this.state.clientList);
+  render() {
 
     let clients = this.state.clientList;
 
     return (<div>
 
-      <h1>Clientes list</h1>
+      <h1>Clientes teste 1</h1>
 
-      <Input onChange={this.search} value={this.state.search} placeholder="busca fácil" />
+      {/* <Input onChange={this.search} value={this.state.search} placeholder="busca fácil" /> */}
 
-      <Table>
-        <tr>
-          <th>nome</th>
-          <th>endereço</th>
-          <th>telefone</th>
-        </tr>
+      <DebounceInput
+        className="form-control"
+        placeholder="busca fácil"
+        minLength={2}
+        debounceTimeout={300}
+        onChange={event => this.setState({ search: event.target.value })} />
 
-        {
-          clients.map((cli, index) =>
-            <tr>
-              <td>{cli.name}</td>
-              <td>{cli.end}</td>
-              <td>{cli.tel}</td>
-            </tr>
+      {
+        clients && clients.length > 0
+          ? (
+            <Table>
+              <tr>
+                <th>nome</th>
+                <th>endereço</th>
+                <th>telefone</th>
+              </tr>
+
+              {
+                clients.map((cli, index) =>
+                  <tr>
+                    <td>{cli.name}</td>
+                    <td>{cli.end}</td>
+                    <td>{cli.tel}</td>
+                  </tr>
+                )
+              }
+
+            </Table>
+          ) : (
+            <Alert color='warning'>nada encontrado</Alert>
           )
-        }
+      }
 
-      </Table>
+
 
 
     </div>);

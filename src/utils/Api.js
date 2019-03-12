@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let BASEURL = 'http://localhost:3001/api';
+let BASEURL = 'http://127.0.0.1:1200/api';
 
 export const clientFindAll = (search) => {
     return axios.get(`${BASEURL}/client?search=${search}`);
