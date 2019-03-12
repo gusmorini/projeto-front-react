@@ -19,60 +19,40 @@ import { isAutenticado, setAutenticado } from '../utils/LoginManager';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-
-    this.state = {aut:isAutenticado()};
-
-    this.logout = () => {
-      setAutenticado(false);
-      props.history.push('/');
-      console.log('logout');
-    }
-
-    this.LoginLogout = () => {
-      if (this.state.aut) {
-        setAutenticado(false);
-        this.setState({aut:false})
-      } else {
-        setAutenticado(true);
-        this.setState({aut:true});
-      }
-    }
 
   }
 
+
   render() {
+
     return (
       <BrowserRouter>
         <Container>
           <header>
-            <h1>Gerenciador de Tarefas </h1>
+            <h1>teste </h1>
           </header>
 
-          { 
-            this.state.aut 
-            ? 
-            <div>
-            <Menu LoginLogout={this.LoginLogout} />
+
+          <div>
+            {/* <Menu LoginLogout={this.LoginLogout} /> */}
             <Switch>
               {/* Routes */}
               <Route path="/" exact component={HomePage} />
-              <PrivateRoute path="/tarefas" component={TarefasPage} />
-              <Route path="/login" exact component={LoginPage} />
+              {/* <PrivateRoute path="/tarefas" component={TarefasPage} /> */}
+              {/* <Route path="/login" exact component={LoginPage} /> */}
               {/* URL erro 404  */}
-              <Route render={()=>{
+              <Route render={() => {
                 return (
                   <div>Página não encontrada</div>
                 );
               }} />
             </Switch>
-            </div>
-            : 
-            <LoginPage LoginLogout={this.LoginLogout} />
-          }
-          
-         
+          </div>
+
+
+
 
         </Container>
       </BrowserRouter>
