@@ -2,8 +2,16 @@ import axios from 'axios';
 
 let BASEURL = 'http://127.0.0.1:1200/api';
 
-export const clientFindAll = (search) => {
+export const clientFind = (search) => {
     return axios.get(`${BASEURL}/client?search=${search}`);
+}
+
+export const clienFindById = (id) => {
+    return axios.get(`${BASEURL}/client/${id}`);
+}
+
+export const clientRegister = (data) => {
+    return axios.post(`${BASEURL}/client`, data);
 }
 
 // export const login = (data) => {

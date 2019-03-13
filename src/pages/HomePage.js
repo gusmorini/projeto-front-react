@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 // pages
 import UsuarioPage from './UsuarioPage';
 import { isAutenticado } from '../utils/LoginManager';
-import { Table, Alert } from 'reactstrap';
+import { Table, Alert, Button } from 'reactstrap';
 
-import { clientFindAll } from '../utils/Api';
+import { clientFind, clienFindById } from '../utils/Api';
 
 import { DebounceInput } from 'react-debounce-input';
+
+import { Link } from 'react-router-dom';
 
 class HomePage extends Component {
 
@@ -14,39 +16,44 @@ class HomePage extends Component {
     super(props);
     // this.state = { aut: isAutenticado(), erros: null };
     this.state = {
-      clientList: [],
+      list: [],
       search: "",
     };
 
     // busca a lista de clientes na API
-    this.clientList = () => {
-      clientFindAll(this.state.search)
+    this.find = () => {
+      clientFind(this.state.search)
         .then(res => {
-          this.setState({ clientList: res.data });
+          this.setState({ list: res.data });
         })
+    }
+
+    this.findById = (id) => {
+      clienFindById(id).then(res => console.log(res.data));
     }
 
   }
 
   componentDidMount() {
-    this.clientList();
+    this.find();
     this.setState({ search: "" });
+    this.findById(5);
   }
 
   componentDidUpdate(oldProps, oldState) {
     const { search } = this.state;
     if (search !== oldState.search) {
-      this.clientList();
+      this.find();
     }
   }
 
   render() {
 
-    let clients = this.state.clientList;
+    let clients = this.state.list;
 
     return (<div>
 
-      <h1>Clientes teste 1</h1>
+      <h2>clientes</h2>
 
       {/* <Input onChange={this.search} value={this.state.search} placeholder="busca fácil" /> */}
 
@@ -82,9 +89,6 @@ class HomePage extends Component {
             <Alert color='warning'>nada encontrado</Alert>
           )
       }
-
-
-
 
     </div>);
   }
