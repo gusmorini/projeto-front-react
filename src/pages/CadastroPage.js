@@ -117,9 +117,9 @@ class CadastroPage extends Component {
           <Label>E-mail</Label>
           <Input name="email" type="email" onChange={this.onChange} />
 
-          <Button onClick={this.onReset}>reset</Button>
+          <Button outline color='warning' onClick={this.onReset}>Resetar</Button>
 
-          <Button outline color='success' size='lg' onClick={this.onSubmit}>salvar</Button>
+          <Button outline color='success' onClick={this.onSubmit}>Salvar</Button>
 
         </form>
 

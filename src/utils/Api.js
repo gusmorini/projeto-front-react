@@ -14,6 +14,18 @@ export const clientRegister = (data) => {
     return axios.post(`${BASEURL}/client`, data);
 }
 
+export const recordFindByClientId = (id) => {
+    return axios.get(`${BASEURL}/record/${id}`);
+}
+
+export const recordAdd = (i) => {
+    return axios.post(`${BASEURL}/record`, i);
+}
+
+export const recordFindById = (id) => {
+    return axios.get(`${BASEURL}/record/detail/${id}`);
+}
+
 // export const login = (data) => {
 //     return axios.post (`${BASEURL}/usuarios/login`, data);
 // }

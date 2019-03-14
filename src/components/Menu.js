@@ -10,7 +10,7 @@ const Menu = (props) => {
         <div>
             <Nav>
                 <NavItem>
-                    <Link className="nav-link" to="/"> Home </Link>
+                    <Link className="nav-link" to="/"> Clientes </Link>
                 </NavItem>
                 <NavItem>
                     <Link className="nav-link" to="/register"> Cadastro </Link>

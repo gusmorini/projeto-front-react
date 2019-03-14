@@ -10,10 +10,11 @@ import './App.css';
 
 import HomePage from './HomePage';
 import CadastroPage from './CadastroPage';
-
 import Menu from "../components/Menu";
 import PrivateRoute from '../components/PrivateRoute';
 import TarefasPage from './TarefasPage';
+import Record from './Record';
+import RecordDetail from './RecordDetail';
 
 import { isAutenticado, setAutenticado } from '../utils/LoginManager';
 
@@ -41,8 +42,10 @@ class App extends Component {
             <Switch>
               {/* Routes */}
               <Route path="/" exact component={HomePage} />
-              <Route path="/home" exact component={HomePage} />
+              <Route path="/clients" exact component={HomePage} />
               <Route path="/register" exact component={CadastroPage} />
+              <Route path="/record/:id" exact component={Record} />
+              <Route path="/record/:id/detail/:id" exact component={RecordDetail} />
               {/* <PrivateRoute path="/tarefas" component={TarefasPage} /> */}
               {/* <Route path="/login" exact component={LoginPage} /> */}
               {/* URL erro 404  */}
@@ -51,9 +54,6 @@ class App extends Component {
               }} />
             </Switch>
           </div>
-
-
-
 
         </Container>
       </BrowserRouter>

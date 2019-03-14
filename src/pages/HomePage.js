@@ -10,6 +10,8 @@ import { DebounceInput } from 'react-debounce-input';
 
 import { Link } from 'react-router-dom';
 
+import ClientTable from '../components/ClientTable';
+
 class HomePage extends Component {
 
   constructor(props) {
@@ -37,7 +39,6 @@ class HomePage extends Component {
   componentDidMount() {
     this.find();
     this.setState({ search: "" });
-    this.findById(5);
   }
 
   componentDidUpdate(oldProps, oldState) {
@@ -49,45 +50,28 @@ class HomePage extends Component {
 
   render() {
 
-    let clients = this.state.list;
-
     return (<div>
 
-      <h2>clientes</h2>
+      <h1>Clientes <Link to="/register" >+</Link> </h1>
+
+
 
       {/* <Input onChange={this.search} value={this.state.search} placeholder="busca fácil" /> */}
 
+      {/* DebounceInput cria um campo de busca com timeout para eviar bugs */}
       <DebounceInput
         className="form-control"
         placeholder="busca fácil"
         minLength={2}
         debounceTimeout={300}
-        onChange={event => this.setState({ search: event.target.value })} />
+        onChange={event => this.setState({ search: event.target.value })}
+      />
 
       {
-        clients && clients.length > 0
-          ? (
-            <Table>
-              <tr>
-                <th>nome</th>
-                <th>endereço</th>
-                <th>telefone</th>
-              </tr>
-
-              {
-                clients.map((cli, index) =>
-                  <tr>
-                    <td>{cli.name}</td>
-                    <td>{cli.end}</td>
-                    <td>{cli.tel}</td>
-                  </tr>
-                )
-              }
-
-            </Table>
-          ) : (
-            <Alert color='warning'>nada encontrado</Alert>
-          )
+        // verifica se a lista de clientes existe e é maior que zero
+        this.state.list && this.state.list.length > 0 ?
+          (<ClientTable td={this.state.list}></ClientTable>) :
+          (<Alert color='warning'>nada encontrado</Alert>)
       }
 
     </div>);
