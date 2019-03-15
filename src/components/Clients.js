@@ -7,7 +7,7 @@ import {
 
 import { FaUserAlt, FaPhone, FaFolderOpen, FaFileAlt } from "react-icons/fa";
 
-const ClientTable = (props) => {
+export const ClientTable = (props) => {
 
     return (
         <div>
@@ -33,4 +33,4 @@ const ClientTable = (props) => {
 
 }
 
-export default ClientTable;
+//export default ClientTable;

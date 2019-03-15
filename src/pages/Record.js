@@ -49,8 +49,6 @@ class Record extends Component {
 
     }
 
-
-
     toggle() {
         this.setState(prevState => ({
             modal: !prevState.modal
@@ -76,10 +74,9 @@ class Record extends Component {
 
         return client !== undefined && (
             <div>
-                <h1>Cliente</h1>
                 <DetailPanel client={client}></DetailPanel>
 
-                <h1>Débitos</h1>
+                <h1 className="title">Débitos</h1>
 
                 {record && record.length > 0 ? (
                     <DetailRecord record={record} clientId={this.state.id}></DetailRecord>

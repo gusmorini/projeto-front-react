@@ -13,7 +13,7 @@ const DetailRecord = (props) => {
     let clientId = props.clientId
 
     return (
-        <div>
+        <div className="detail-record">
 
             <Table>
 
@@ -34,7 +34,7 @@ const DetailRecord = (props) => {
                             <td>R$ {item.value}</td>
                             <td>{item.note}</td>
                             <td>
-                                <Link to={`/record/${clientId}/detail/${item.id}`}>abrir</Link>
+                                <Link to={`/record/detail/${item.id}`}>abrir</Link>
                                 {/* <Button outline size="sm" color="success"> <FaBitcoin></FaBitcoin></Button>
                                 <Button outline size="sm" color="warning"> <FaPencilAlt></FaPencilAlt></Button>
                                 <Button outline size="sm" color="danger"> <FaTrashAlt></FaTrashAlt></Button> */}

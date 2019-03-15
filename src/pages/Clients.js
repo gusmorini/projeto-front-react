@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 import ClientTable from '../components/ClientTable';
 
-class HomePage extends Component {
+class Clients extends Component {
 
   constructor(props) {
     super(props);
@@ -78,6 +78,6 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default Clients;
 
 

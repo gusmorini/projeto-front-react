@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Table, } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import {
     Link,
     withRouter,
 } from 'react-router-dom';
 
-import { FaEnvelope, FaPhoneSquare } from "react-icons/fa";
+import { FaBitcoin, FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 
 const DetailPanel = (props) => {
 
@@ -25,17 +25,20 @@ const DetailPanel = (props) => {
     }
 
     return (
-        <div>
+        <div className="detail-panel">
 
-            <Table>
-                <tr><th>{data.name}</th></tr>
-                <tr><td> {data.end}</td></tr>
-                <tr><td> {data.tel}</td></tr>
-                <tr><td> {data.email}</td></tr>
-                <tr><td>{doc1} : {data.doc1}</td></tr>
-                <tr><td>{doc2} : {data.doc2}</td></tr>
-                <tr><td>{birth} : {data.birth}</td></tr>
-            </Table>
+            <h1>{data.name} </h1>
+            <h2>End: {data.end}  Tel: {data.tel}</h2>
+            <h2>{data.email}</h2>
+            <h2>{birth} : {data.birth}</h2>
+            <h2>{doc1} : {data.doc1}</h2>
+            <h2>{doc2} : {data.doc2}</h2>
+
+            <p>
+                <Button outline color="danger"> <FaTrashAlt></FaTrashAlt> Desativar</Button>
+                <Button outline color="primary"> <FaPencilAlt></FaPencilAlt> Editar </Button>
+            </p>
+
         </div>
     );
 

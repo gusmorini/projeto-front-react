@@ -38,6 +38,19 @@ h1 {
   font-family: 'Lobster', cursive;
 }
 
+.detail-panel{
+  background: none;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #007bff;
+  border-radius: 15px;
+}
+
+.detail-panel h2 {
+  font-size: 16px;
+  line-height: 30px;
+}
+
 .container{
   max-width: 900px;
   min-height: 600px;

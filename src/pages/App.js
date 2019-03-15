@@ -8,7 +8,7 @@ import {
 
 import './App.css';
 
-import HomePage from './HomePage';
+import Clients from './Clients';
 import CadastroPage from './CadastroPage';
 import Menu from "../components/Menu";
 import PrivateRoute from '../components/PrivateRoute';
@@ -41,11 +41,10 @@ class App extends Component {
             <Menu />
             <Switch>
               {/* Routes */}
-              <Route path="/" exact component={HomePage} />
-              <Route path="/clients" exact component={HomePage} />
+              <Route path="/" exact component={Clients} />
               <Route path="/register" exact component={CadastroPage} />
               <Route path="/record/:id" exact component={Record} />
-              <Route path="/record/:id/detail/:id" exact component={RecordDetail} />
+              <Route path="/record/detail/:id" exact component={RecordDetail} />
               {/* <PrivateRoute path="/tarefas" component={TarefasPage} /> */}
               {/* <Route path="/login" exact component={LoginPage} /> */}
               {/* URL erro 404  */}
