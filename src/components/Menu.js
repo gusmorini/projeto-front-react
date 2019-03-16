@@ -12,9 +12,9 @@ const Menu = (props) => {
                 <NavItem>
                     <Link className="nav-link" to="/"> Clientes </Link>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                     <Link className="nav-link" to="/register"> Cadastro </Link>
-                </NavItem>
+                </NavItem> */}
             </Nav>
         </div>
     );

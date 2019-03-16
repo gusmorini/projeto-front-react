@@ -123,21 +123,6 @@ class CadastroPage extends Component {
 
         </form>
 
-        {/* <h1>Novo Usuário</h1>
-        <form onSubmit={this.onSubmit}>
-          <Button type="submit">Cadastrar</Button>
-        </form> */}
-
-
-        {/* //   "name": "Gustavo Morini",
-      //   "end": "rua 123",
-      //   "birth": "1987-08-29",
-      //   "tel": "00000000",
-      //   "email": "teste@teste",
-      //   "type": 1,
-      //   "doc1": "0000",
-      //   "doc2": "00000" */}
-
       </div>
     )
   }

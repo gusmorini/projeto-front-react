@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 // pages
-import UsuarioPage from './UsuarioPage';
-import { isAutenticado } from '../utils/LoginManager';
-import { Table, Alert, Button } from 'reactstrap';
+
+import { Table, Row, Alert } from 'reactstrap';
 
 import { clientFind, clienFindById } from '../utils/Api';
 
@@ -10,7 +9,7 @@ import { DebounceInput } from 'react-debounce-input';
 
 import { Link } from 'react-router-dom';
 
-import ClientTable from '../components/ClientTable';
+import { ClientTable, ModalRegister } from '../components/Clients';
 
 class Clients extends Component {
 
@@ -20,7 +19,10 @@ class Clients extends Component {
     this.state = {
       list: [],
       search: "",
+      modal: false,
     };
+
+    this.toggle = this.toggle.bind(this);
 
     // busca a lista de clientes na API
     this.find = () => {
@@ -34,6 +36,12 @@ class Clients extends Component {
       clienFindById(id).then(res => console.log(res.data));
     }
 
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   componentDidMount() {
@@ -52,11 +60,11 @@ class Clients extends Component {
 
     return (<div>
 
-      <h1>Clientes <Link to="/register" >+</Link> </h1>
+      <h1>Clientes </h1>
 
-
-
-      {/* <Input onChange={this.search} value={this.state.search} placeholder="busca fácil" /> */}
+      <Row>
+        <Link to="/register">Adicionar</Link>
+      </Row>
 
       {/* DebounceInput cria um campo de busca com timeout para eviar bugs */}
       <DebounceInput
